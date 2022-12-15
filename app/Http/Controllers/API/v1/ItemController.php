@@ -32,7 +32,10 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return  response()->json([
+            'code' => JsonResponse::HTTP_OK,
+            'data' => 'store',
+        ], JsonResponse::HTTP_OK);
     }
 
     /**
@@ -43,7 +46,10 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-        //
+        return  response()->json([
+            'code' => JsonResponse::HTTP_OK,
+            'data' => $id,
+        ], JsonResponse::HTTP_OK);
     }
 
     /**
@@ -55,7 +61,10 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return  response()->json([
+            'code' => JsonResponse::HTTP_OK,
+            'data' => $id,
+        ], JsonResponse::HTTP_OK);
     }
 
     /**
@@ -66,6 +75,9 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return  response()->json([
+            'code' => JsonResponse::HTTP_OK,
+            'data' => $id,
+        ], JsonResponse::HTTP_OK);
     }
 }
