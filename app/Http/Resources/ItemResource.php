@@ -12,8 +12,15 @@ class ItemResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
-    public function toArray($request)
+    public function toArray($request, $code = 200, $message = '')
     {
-        return parent::toArray($request);
+
+        $res = parent::toArray($request);
+
+        return  [
+            "statusCode" => $code,
+            "message" => $message,
+            "payload" => $res
+        ];
     }
 }

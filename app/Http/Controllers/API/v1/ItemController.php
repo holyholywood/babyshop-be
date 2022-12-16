@@ -17,11 +17,8 @@ class ItemController extends Controller
      */
     public function index(ItemService $Service)
     {
-        // return (new ItemResource($Service->getAllData()));
-        return  response()->json([
-            'code' => JsonResponse::HTTP_OK,
-            'data' => $Service->getAllData(),
-        ], JsonResponse::HTTP_OK);
+        // return (new ItemResource($Service->getAllData(), 201, 'hello World'));
+        return  response()->json(APIResponse(JsonResponse::HTTP_OK, 'hello', $Service->getItem()), JsonResponse::HTTP_OK);
     }
 
     /**
@@ -30,12 +27,10 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, ItemService $Service)
     {
-        return  response()->json([
-            'code' => JsonResponse::HTTP_OK,
-            'data' => 'store',
-        ], JsonResponse::HTTP_OK);
+        $body = $request->all();
+        return  response()->json(APIResponse(JsonResponse::HTTP_OK, 'Success Save Item', $Service->storeItem($body)), JsonResponse::HTTP_OK);
     }
 
     /**
@@ -44,12 +39,9 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, ItemService $Service)
     {
-        return  response()->json([
-            'code' => JsonResponse::HTTP_OK,
-            'data' => $id,
-        ], JsonResponse::HTTP_OK);
+        return  response()->json(APIResponse(JsonResponse::HTTP_OK, 'Success Get Item ID ' . $id, $Service->getItem($id)), JsonResponse::HTTP_OK);
     }
 
     /**
@@ -59,12 +51,11 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id,  ItemService $Service)
     {
-        return  response()->json([
-            'code' => JsonResponse::HTTP_OK,
-            'data' => $id,
-        ], JsonResponse::HTTP_OK);
+        $data = $request->all();
+
+        return  response()->json(APIResponse(JsonResponse::HTTP_OK, 'Success Update Item ID ' . $id, $Service->updateItem($id, $data)), JsonResponse::HTTP_OK);
     }
 
     /**
@@ -73,11 +64,8 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, ItemService $Service)
     {
-        return  response()->json([
-            'code' => JsonResponse::HTTP_OK,
-            'data' => $id,
-        ], JsonResponse::HTTP_OK);
+        return  response()->json(APIResponse(JsonResponse::HTTP_OK, 'Success Delete Item ID ' . $id, $Service->deleteItem($id)), JsonResponse::HTTP_OK);
     }
 }
