@@ -20,7 +20,8 @@ class ItemFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'price' => $this->faker->numberBetween(1000, 1000000),
-            'quantity' => $this->faker->numberBetween(10, 100)
+            'description' => $this->faker->words(10, true),
+            'thumbnail_url' => $this->faker->image()
         ];
     }
 }

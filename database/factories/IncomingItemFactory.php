@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\IncomingItem>
  */
-class ExitItemFacotryFactory extends Factory
+class IncomingItemFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,8 @@ class ExitItemFacotryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'items_id' => $this->faker->numberBetween(1, 10),
+            'qty' => $this->faker->numberBetween(1, 100)
         ];
     }
 }

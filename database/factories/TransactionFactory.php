@@ -17,7 +17,8 @@ class TransactionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'total_payment' => $this->faker->numberBetween(10000, 1000000),
+            'description' => $this->faker->sentence(10),
         ];
     }
 }

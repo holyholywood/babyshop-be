@@ -15,14 +15,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
+        // \App\Models\User::factory(10)->create();
 
         \App\Models\User::factory()->create([
             'name' => 'Ditotisi',
+            'username' => 'ditotisi',
             'email' => 'test@example.com',
             'password' => Hash::make('ditoganteng')
         ]);
 
-        $this->call([ItemsSeeder::class]);
+        $this->call([ItemsSeeder::class, StocksSeeder::class, TransactionsSeeder::class, IncomingItemsSeeder::class, ExitItemsSeeder::class]);
     }
 }
