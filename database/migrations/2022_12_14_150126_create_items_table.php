@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('price');
+            $table->unsignedBigInteger('quantity')->default(0);
+            $table->string('thumbnail_url')->nullable(true);
+            $table->text('description');
             $table->timestamps();
         });
     }

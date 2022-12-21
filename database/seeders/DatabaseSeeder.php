@@ -24,6 +24,6 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('ditoganteng')
         ]);
 
-        $this->call([ItemsSeeder::class, StocksSeeder::class, TransactionsSeeder::class, IncomingItemsSeeder::class, ExitItemsSeeder::class]);
+        $this->call([ItemsSeeder::class, TransactionsSeeder::class, IncomingItemsSeeder::class, ExitItemsSeeder::class]);
     }
 }

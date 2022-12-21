@@ -13,6 +13,7 @@ class Item extends Model
         'name',
         'price',
         'description',
-        'thumbnail_url'
+        'thumbnail_url',
+        'quantity'
     ];
 }

@@ -21,7 +21,8 @@ class ItemFactory extends Factory
             'name' => $this->faker->name(),
             'price' => $this->faker->numberBetween(1000, 1000000),
             'description' => $this->faker->words(10, true),
-            'thumbnail_url' => $this->faker->image()
+            'thumbnail_url' => $this->faker->imageUrl(),
+            'quantity' => $this->faker->numberBetween(1000, 1000000000)
         ];
     }
 }
