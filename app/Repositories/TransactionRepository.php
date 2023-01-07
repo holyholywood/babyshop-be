@@ -23,7 +23,6 @@ class TransactionRepository
 
     public function SaveOneTransaction($data)
     {
-
         return Transaction::create($data);
     }
 }

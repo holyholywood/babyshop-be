@@ -36,4 +36,10 @@ class ItemRepository
     {
         return Item::destroy($id);
     }
+
+    public function addItemQuantity($id, $amount)
+    {
+
+        Item::where('id', $id)->increment('quantity', $amount);
+    }
 }

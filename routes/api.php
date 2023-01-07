@@ -25,6 +25,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/', function () {
+    return 'server is healthy';
+});
+
+Route::controller(AuthenticationController::class)->name('Auth')->prefix('auth')->group(function () {
+    Route::post('/login', 'login')->name('login');
+});
 
 Route::controller(ItemController::class)->name('Items.')->prefix('/items')->group(function () {
     Route::get('/', 'index')->name('index');
@@ -42,11 +49,15 @@ Route::controller(StockController::class)->name('Stocks.')->prefix('/stocks')->g
 
 Route::controller(TransactionController::class)->name('Transactions.')->prefix('/transactions')->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::get('/{id}', 'show')->name('show');
+    Route::post('/', 'store')->name('store');
 });
 
 
 Route::controller(IncomingItemController::class)->name('IncomingItem.')->prefix('/incomingitem')->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::get('/{id}', 'show')->name('show');
+    Route::post('/', 'store')->name('store');
 });
 
 

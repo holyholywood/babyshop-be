@@ -24,6 +24,8 @@ class IncomingItemRepository
     public function SaveOneIncomingItem($data)
     {
 
+        (new ItemRepository())->addItemQuantity($data['items_id'], $data['qty']);
+
         return IncomingItem::create($data);
     }
 }

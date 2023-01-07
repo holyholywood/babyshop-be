@@ -26,4 +26,10 @@ class ExitItemRepository
 
         return ExitItem::create($data);
     }
+
+    public function SaveManyExitItem($data)
+    {
+
+        return ExitItem::insert($data);
+    }
 }

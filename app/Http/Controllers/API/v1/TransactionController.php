@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API\v1;
 
 use App\Http\Controllers\Controller;
+use App\Services\TransactionService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -12,11 +14,9 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(TransactionService $Service)
     {
-        return  response()->json([
-            'code' => 'accessed transactions'
-        ]);
+        return  response()->json(APIResponse(JsonResponse::HTTP_OK, 'Success get all transaction', $Service->getTransaction()));
     }
 
     /**
@@ -25,9 +25,10 @@ class TransactionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, TransactionService $Service)
     {
-        //
+        $body = $request->all();
+        return  response()->json(APIResponse(JsonResponse::HTTP_OK, 'Success store transaction', $Service->storeTransaction($body)));
     }
 
     /**
@@ -36,9 +37,9 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, TransactionService $Service)
     {
-        //
+        return  response()->json(APIResponse(JsonResponse::HTTP_OK, 'Success get all transaction', $Service->getTransaction($id)));
     }
 
     /**
